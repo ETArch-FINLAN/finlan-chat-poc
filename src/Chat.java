@@ -34,8 +34,8 @@ import javax.swing.text.StyledDocument;
 import javax.swing.text.StyledEditorKit;
 import javax.swing.text.Utilities;
 
-import br.ufu.facom.network.dlontology.FinSocket;
-import br.ufu.facom.network.dlontology.msg.Message;
+import br.ufu.facom.network.dlop.FinSocket;
+import br.ufu.facom.network.dlop.message.DlopMessage;
 
 public class Chat extends JFrame{
 	private JEditorPane viewPane;
@@ -302,7 +302,7 @@ public class Chat extends JFrame{
 				@Override
 				public void run(){
 					while(true){
-						Message msg = fin.read();
+						DlopMessage msg = fin.read();
 						if(msg != null || msg.getPayload().length > 0){
 								buffer.append("<b style=color:blue>"+msg.getSource()+"</b><b> para </b><b style=color:green>"+msg.getDestination()+"</b><b>: "+new String(msg.getPayload()).replace("\n", "<br>")+"</b><br>");						
 								
